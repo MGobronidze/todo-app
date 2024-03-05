@@ -92,7 +92,7 @@ const FuncTodo = (e) => {
                     ))
                 }
             </ul>
-
+                <h1>Done Tasks</h1>
             <ul>
                 {
                     doneTasks.map((task, index) => (

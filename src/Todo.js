@@ -1,12 +1,13 @@
 import React, {useCallback, useState} from "react"
+import './styles.css';
 
 const TodoItem = React.memo(({task, onDelete, onDone, id})=> {
     console.log("re-render")
     return(
         <li>
             {task}
-            <button onClick={() => onDelete(id)}>Delete</button>
-            <button onClick={()=> onDone(task)}>Done</button>
+            <button onClick={() => onDelete(id)} className="add-btn">Delete</button>
+            <button onClick={()=> onDone(task)} className="add-btn" >Done</button>
         </li>
     )
 })
@@ -16,8 +17,8 @@ const DoneTask = React.memo(({task, onDelete, onReset, id})=>{
     return(
         <li>
             {task}
-            <button onClick={() => onDelete(id)}>Delete</button>
-            <button onClick={()=> onReset(id)}>Reset</button>
+            <button onClick={() => onDelete(id)} className="add-btn">Delete</button>
+            <button onClick={()=> onReset(id)} className="add-btn">Reset</button>
         </li>
     )
 })
@@ -66,8 +67,8 @@ const FuncTodo = (e) => {
     }, [doneTasks, tasks]) //99
 
     return(
-        <div>
-            <h1>Todo App</h1>
+        <div className="main-div">
+            <h1 className="header header-name">Todo App</h1>
 
             <form onSubmit={handleSubmit}>
                 <input 
@@ -75,8 +76,9 @@ const FuncTodo = (e) => {
                     placeholder="enter a task"
                     onChange={handleChange}
                     value={currentTask}
+                    className="input-field"
                 />
-                <button type="submit">Add Task</button>
+                <button type="submit" className="add-btn">Add Task</button>
             </form>
 
             <ul>
@@ -92,7 +94,7 @@ const FuncTodo = (e) => {
                     ))
                 }
             </ul>
-                <h1>Done Tasks</h1>
+                <h1 className="header-name header">Done Tasks</h1>
             <ul>
                 {
                     doneTasks.map((task, index) => (
